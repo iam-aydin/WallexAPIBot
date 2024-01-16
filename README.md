@@ -11,3 +11,13 @@ With WallexAPIBot, you can focus on other aspects of your business while we hand
 ## Updates
 
 Stay tuned for more features and updates as we continue to enhance our bot's capabilities. Join us in revolutionizing your cryptocurrency trading journey with WallexAPIBot.
+
+## Diagram
+```mermaid
+sequenceDiagram
+    Bot->>Wallex: Subscribe to a market by ApiKey
+    Wallex->>Bot: Send Market Data by websocket
+    Bot->>Bot: Analyze Market Data
+    Bot->>Wallex: Open a Trade (Order) if price is appropriate
+    Bot->>DB: Save data in Table
+```
