@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Market Data</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+ <div class="container mt-5">
+     <h1 class="text-center">Market Data</h1>
+     <% if (result && result.result && result.result.symbols) { %>
+         <table class="table table-striped">
+             <thead>
+               <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Base Asset</th>
+                <th scope="col">Quote Asset</th>
+                <th scope="col">Last Price</th>
+                <th scope="col">Last Quantity</th>
+                <th scope="col">Last Trade Side</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% Object.values(result.result.symbols).forEach(function(symbolData) { %>
+                <tr>
+                    <td><%= symbolData.symbol %></td>
+                    <td><%= symbolData.baseAsset %></td>
+                    <td><%= symbolData.quoteAsset %></td>
+                    <td><%= symbolData.stats.lastPrice %></td>
+                    <td><%= symbolData.stats.lastQty %></td>
+                    <td><%= symbolData.stats.lastTradeSide %></td>
+                </tr>
+               <% }); %>
+             </tbody>
+         </table>
+     <% } else { %>
+         <p>No market data available.</p>
+     <% } %>
+ </div>
+</body>
+</html>
